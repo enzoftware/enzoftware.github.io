@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SoccerFreestyle</string>
+    <string name="title_activity_splash_activity">SplashACtivity</string>
 </resources>
