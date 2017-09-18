@@ -11,21 +11,53 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     var counterKicks = 0
     var incrementer = 1
+    var handler: Handler ?= null
+    internal var flag:Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        bindViews()
 
 
-            ball.setOnClickListener {
-            counterKicks++
-            counter.text = counterKicks.toString()
-            val animation = TranslateAnimation(0.0f, 0.0f, 0.0f, -750.0f)
-            animation.duration = 700
-            animation.repeatCount = 1
-            animation.repeatMode = 2
-            animation.fillAfter = true
-            ball.startAnimation(animation)
+    }
+
+    private fun bindViews() {
+
+        ball.setOnClickListener {
+            if (flag){
+                handler?.removeCallbacks(runnable)
+                Toast.makeText(this,"hola",Toast.LENGTH_SHORT).show()
+                flag=false
+            }else{
+                Toast.makeText(this,"bye",Toast.LENGTH_SHORT).show()
+                handler?.postDelayed(runnable, 0)
+                flag=true
+            }
+
         }
+
+        handler = Handler()
+
+    }
+
+    fun Random.nextInt(range: IntRange): Int {
+        return range.start + nextInt(range.last - range.start)
+    }
+
+    var runnable: Runnable = object : Runnable {
+
+        override fun run() {
+
+            var random:Int = Random().nextInt(1..10)
+            if (random < 2) {
+                counter.text = random.toString()
+            } else {
+                counter.text = random.toString()
+            }
+            handler?.postDelayed(this, 0)
+        }
+
     }
 
 
