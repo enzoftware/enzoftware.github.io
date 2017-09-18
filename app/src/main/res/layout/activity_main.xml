@@ -18,7 +18,15 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:src="@drawable/ball"
-        tools:layout_editor_absoluteY="431dp"
-        tools:layout_editor_absoluteX="132dp" />
+        android:id="@+id/ball"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintVertical_bias="0.879" />
 
 </android.support.constraint.ConstraintLayout>
