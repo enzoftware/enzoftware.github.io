@@ -3,7 +3,6 @@ package com.`fun`.enzoftware.soccerfreestyle
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.animation.TranslateAnimation
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -18,8 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bindViews()
-
-
     }
 
     private fun bindViews() {
@@ -34,11 +31,8 @@ class MainActivity : AppCompatActivity() {
                 handler?.postDelayed(runnable, 0)
                 flag=true
             }
-
         }
-
         handler = Handler()
-
     }
 
     fun Random.nextInt(range: IntRange): Int {
@@ -59,7 +53,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-
-
 }
