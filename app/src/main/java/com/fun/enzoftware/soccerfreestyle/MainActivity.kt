@@ -9,7 +9,6 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     var counterKicks = 0
-    var incrementer = 1
     var handler: Handler ?= null
     internal var flag:Boolean = false
 
@@ -43,12 +42,17 @@ class MainActivity : AppCompatActivity() {
 
         override fun run() {
 
+            var inc = 1
+
             var random:Int = Random().nextInt(1..10)
-            if (random < 2) {
-                counter.text = random.toString()
-            } else {
-                counter.text = random.toString()
-            }
+
+                counter.text = ball.y.toString()
+                ball.y -= inc
+                ball.x += 0
+                if ( ball.y < 400 ){
+                    inc *= -1
+                }
+
             handler?.postDelayed(this, 0)
         }
 
