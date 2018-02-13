@@ -1,6 +1,7 @@
 # vue-chart-example
 
-> A Vue.js project
+> A Vue.js example project work with chart.js 
+![gif](art/chart.gif)
 
 ## Build Setup
 
