@@ -11,6 +11,7 @@
   "dependencies": {
     "bulma": "^0.6.2",
     "fullpage.js": "^2.9.6",
+    "mdi": "^2.1.19",
     "vue": "^2.5.3",
     "vuetify": "^1.0.0"
   },
