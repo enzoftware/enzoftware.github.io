@@ -9,6 +9,8 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "bulma": "^0.6.2",
+    "fullpage.js": "^2.9.6",
     "vue": "^2.5.3",
     "vuetify": "^1.0.0"
   },
