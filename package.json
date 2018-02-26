@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bulma": "^0.6.2",
+    "chart.js": "^2.7.1",
     "fullpage.js": "^2.9.6",
     "mdi": "^2.1.19",
     "vue": "^2.5.3",
