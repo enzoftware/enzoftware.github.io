@@ -65,7 +65,7 @@
     text-align: center;
   }
   
-  a {
+  a {<
     text-decoration: none;
     color: white !important;
   }
