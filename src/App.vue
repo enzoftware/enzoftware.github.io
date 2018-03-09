@@ -2,7 +2,7 @@
   <v-app>
     <div id="fullpage">
   
-      <div class="section" id="section1">
+      <div class="section">
         <h1>{{name}}</h1>
         <h2>{{user}}</h2>
         <div class="contacts">
@@ -28,24 +28,21 @@
         </div>
       </div>
   
-  
-      <div class="section" id="section2">
+      <div class="section">
+        Skill
+      </div>
+
+      <div class="section">
         <div class="slide" data-anchor="slide1">Project 1</div>
         <div class="slide" data-anchor="slide2">Project 2</div>
       </div>
   
-  
-  
-      <div class="section" id="section3">
-        Skill
-      </div>
-  
-      <div class="section fp-auto-height home" id="section4">
+      <div class="section fp-auto-height">
         <footer class="footer">
           <div class="container">
             <div class="content has-text-centered">
               <p>
-                <strong>Bulma</strong>
+                <strong>Footer</strong>
               </p>
             </div>
           </div>
@@ -56,28 +53,10 @@
   </v-app>
 </template>
 
-<script>
-  $(document).ready(function() {
-    $('#fullpage').fullpage({
-      sectionsColor: ['#F44336','#9C27B0','#2196F3','#4CAF50']
-    });
-  });
-  
-  export default {
-    data() {
-      return {
-        name: 'Enzo Lizama Paredes',
-        user: 'enzoftware'
-      }
-    }
-  }
-</script>
-
 
 <style>
-  
-
   @import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC|Fira+Mono');
+
   .contacts {
     display: inline-block;
   }
@@ -105,7 +84,26 @@
     font-family: 'Fira Mono', monospace;
     color: white;
   }
-
-
-
 </style>
+
+
+<script>
+
+  $(document).ready(function() {
+    $('#fullpage').fullpage({
+      sectionsColor: ['#F44336','#9C27B0','#2196F3','#4CAF50']
+    });
+  });
+  
+  export default {
+    data() {
+      return {
+        name: 'Enzo Lizama Paredes',
+        user: 'enzoftware'
+      }
+    }
+  }
+  
+</script>
+
+
