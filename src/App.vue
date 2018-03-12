@@ -2,7 +2,12 @@
   <v-app>
     <div id="fullpage">
       <div class="section">
-        Home
+        <div class="display-4"> 
+          {{name}}
+        </div>
+        <div class="display-2">
+          {{user}}  
+        </div>
       </div>
       <div class="section">
         About
@@ -14,7 +19,7 @@
         Projects
       </div>
       <div class="section fp-auto-height">
-        Footer
+        <personal-footer/>
       </div>
     </div>
   </v-app>
@@ -23,13 +28,20 @@
 
 <style>
 
+.section{
+  text-align: center !important;
+}
+
 </style>
 
 
 <script>
+  import PersonalFooter from './components/PersonalFooter.vue'
+
+
   $(document).ready(function() {
     $('#fullpage').fullpage({
-      sectionsColor : ['#ccc', '#fff',"#000","#123456","#fff"],
+      sectionsColor : ['#fff', '#fff',"#fff","#fff","#FFFFFF"],
       scrollingSpeed: 1000,
       navigation: true
     });
@@ -41,6 +53,9 @@
         name: 'Enzo Lizama Paredes',
         user: 'enzoftware'
       }
+    },
+    components:{
+      PersonalFooter
     }
   }
   
