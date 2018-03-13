@@ -1,10 +1,6 @@
 # enzoftware.github.io
 
-<div align="center">
-
-    ![name](art/ss.png)
-
-</div>
+![demo](art/ss.png)
 
 ## Build Setup
 
