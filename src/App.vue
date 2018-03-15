@@ -2,12 +2,7 @@
   <v-app>
     <div id="fullpage">
       <div class="section">
-        <div class="display-4"> 
-          {{name}}
-        </div>
-        <div class="display-2">
-          {{user}}  
-        </div>
+        <home/>
       </div>
       <div class="section">
         About
@@ -37,6 +32,7 @@
 
 <script>
   import PersonalFooter from './components/PersonalFooter.vue'
+  import Home from './components/Home.vue'
 
 
   $(document).ready(function() {
@@ -50,12 +46,12 @@
   export default {
     data() {
       return {
-        name: 'Enzo Lizama Paredes',
-        user: 'enzoftware'
+        
       }
     },
     components:{
-      PersonalFooter
+      PersonalFooter,
+      Home
     }
   }
   
