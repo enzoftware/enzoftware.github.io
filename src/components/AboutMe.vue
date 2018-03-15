@@ -1,33 +1,34 @@
 <template>
-  <div class="wrapper">
-      <div class="roles">
 
-        <div>
-            I am a software engineer student    <i class="em em-thinking_face"></i>
-        </div>
-		
-        <div>
-            I am a Android developer    <i class="em em-iphone"></i>
-        </div>
-		
-		<div>
-		    I am a web developer    <i class="em em-computer"></i>
-		</div>
-		
-		<div>
-		    I am a community lover  <i class="em em-green_heart"></i>
-		</div>
+<div class="wrapper">
+    <div class="roles">
+
+    <div>
+        I am a software engineer student    <i class="em em-thinking_face"></i>
+    </div>
     
-        <div>
-            I am a soccer passionate    <i class="em em-soccer"></i>
-        </div>
+    <div>
+        I am a Android developer    <i class="em em-iphone"></i>
+    </div>
+    
+    <div>
+        I am a web developer    <i class="em em-computer"></i>
+    </div>
+    
+    <div>
+        I am a community lover  <i class="em em-green_heart"></i>
+    </div>
 
-        <div>
-            I am peruvian   <i class="em em-flag-pe"></i>
-        </div>
+    <div>
+        I am a soccer passionate    <i class="em em-soccer"></i>
+    </div>
 
-      </div>
-  </div>
+    <div>
+        I am peruvian   <i class="em em-flag-pe"></i>
+    </div>
+
+    </div>
+</div>
 </template>
 
 <style>
