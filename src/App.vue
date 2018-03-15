@@ -38,7 +38,7 @@
 
   $(document).ready(function() {
     $('#fullpage').fullpage({
-      sectionsColor : ['#fff', '#fff',"#fff","#fff","#FFFFFF"],
+      sectionsColor : ['#212121', '#212121',"#212121","#212121","#212121"],
       scrollingSpeed: 1000,
       navigation: true
     });

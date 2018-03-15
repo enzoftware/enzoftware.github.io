@@ -35,7 +35,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 .wrapper{
-    
+    color: #ffffff;
     width: 500px;
     display: block;
     margin: 0 auto;
@@ -69,7 +69,7 @@ $(document).ready(function(){
             first.css('margin-top', '0px');
             current = 1;
         } else current++;
-    }, 1500);
+    }, 2000);
 });
 
 

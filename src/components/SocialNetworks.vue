@@ -4,7 +4,7 @@
         v-for="icon in icons"
         :key="icon"
         icon
-        class="mx-3 black--text"
+        class="mx-3 pink--text"
         @click="openLinkNewTab(icon)"
     >
         <v-icon size="36px">{{icon}}</v-icon>

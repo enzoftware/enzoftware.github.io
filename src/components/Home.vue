@@ -15,11 +15,13 @@
 
     .titleName{
         font-family: 'Zilla Slab Highlight', cursive;
+        color: #ffffff;
        /* margin: 50px !important;*/
     }
 
     .titleUsername{
         font-family: 'VT323', monospace;
+        color: #ffffff;
     }
 
 
