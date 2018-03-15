@@ -5,7 +5,7 @@
         <home/>
       </div>
       <div class="section">
-        About
+        <about-me/>
       </div>
       <div class="section">
         Skills
@@ -33,6 +33,7 @@
 <script>
   import PersonalFooter from './components/PersonalFooter.vue'
   import Home from './components/Home.vue'
+  import AboutMe from './components/AboutMe.vue'
 
 
   $(document).ready(function() {
@@ -51,7 +52,8 @@
     },
     components:{
       PersonalFooter,
-      Home
+      Home,
+      AboutMe
     }
   }
   

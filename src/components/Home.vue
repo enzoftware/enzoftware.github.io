@@ -15,7 +15,7 @@
 
     .titleName{
         font-family: 'Zilla Slab Highlight', cursive;
-        margin: 50px !important;
+       /* margin: 50px !important;*/
     }
 
     .titleUsername{
