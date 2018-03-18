@@ -1,77 +1,55 @@
 <template>
-
-<div class="wrapper">
-    <div class="roles">
-
-    <div>
-        I am a software engineer student    <i class="em em-thinking_face"></i>
-    </div>
-    
-    <div>
-        I am a Android developer    <i class="em em-iphone"></i>
-    </div>
-    
-    <div>
-        I am a web developer    <i class="em em-computer"></i>
-    </div>
-    
-    <div>
-        I am a community lover  <i class="em em-green_heart"></i>
-    </div>
-
-    <div>
-        I am a soccer passionate    <i class="em em-soccer"></i>
-    </div>
-
-    <div>
-        I am peruvian   <i class="em em-flag-pe"></i>
-    </div>
-
-    </div>
-</div>
+  <div>
+      <v-container grid-list-md text-xs-center>
+        <v-layout row wrap>
+            <v-flex xs12>
+                <v-card dark class="grey darken-4">
+                <v-card-text class="px-0">
+                    <about-me-scroll/>
+                    <div class="display-4 white--text description">
+                        Let me introduce myself 
+                    </div>
+                </v-card-text>
+                </v-card>
+            </v-flex>
+            <v-flex xs6>
+                <v-card dark color="grey darken-4">
+                    <v-card-text class="px-0" id="my_photo">
+                        <img src="https://pbs.twimg.com/profile_images/912133818525548544/fdJ9SEVU_400x400.jpg" />
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+            <v-flex xs6>
+                <v-card dark color="grey darken-4">
+                    <v-card-text class="display-3 description">
+                        Challenges lover. Problem solver. Occasional writer. Software Engineer student. Passionate about soccer.
+                        Kotlin evangelist. Android developer by passion. Eternal self-taught. Community organizer. 
+                    </v-card-text>
+                </v-card>
+            </v-flex>
+        </v-layout>
+      </v-container>
+  </div>
 </template>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-.wrapper{
-    color: #ffffff;
-    width: 500px;
-    display: block;
-    margin: 0 auto;
-}
-
-.roles {
-    font-size: 30px;
-    height: 50px;
-    vertical-align: middle;
-    overflow: hidden;
-}
-
-.roles div {
-    height: 50px;
-    transition: margin-top 1s ease-in-out;
-}
+    @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono');
+    .description{
+        font-family: 'IBM Plex Mono', monospace;
+    }
+    #my_photo{
+        margin-top: 10%;
+    }
 
 </style>
 
-
 <script>
-$(document).ready(function(){
-    var current = 1; //keeps track of the current div
-    var height = $('.roles').height(); //the height of the roles div
-    var numberDivs = $('.roles').children().length; //the number of children of the roles div
-    var first = $('.roles div:nth-child(1)'); //the first div nested in roles div
-    setInterval(function() {
-        var number = current * -height;
-        first.css('margin-top', number + 'px');
-        if (current === numberDivs) {
-            first.css('margin-top', '0px');
-            current = 1;
-        } else current++;
-    }, 2000);
-});
 
+    import AboutMeScroll from './AboutMeScroll.vue'
 
+    export default {
+        components:{
+            AboutMeScroll
+        }
+    }
 </script>

@@ -40,7 +40,9 @@
     $('#fullpage').fullpage({
       sectionsColor : ['#212121', '#212121',"#212121","#212121","#212121"],
       scrollingSpeed: 1000,
-      navigation: true
+      navigation: true,
+      anchors : ['Home','About','Skills','Projects'],
+      navigationTooltips: ['Home','About','Skills','Projects']
     });
   });
 
