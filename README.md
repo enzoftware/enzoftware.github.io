@@ -1,6 +1,4 @@
-# enzoftware.github.io
-
-![demo](art/ss.png)
+![](art/ss.png)
 
 ## Build Setup
 
