@@ -1,6 +1,7 @@
 <template>
-  <v-footer height="auto" width="auto">
-    <v-card
+<v-container grid-list-xl>
+  <v-footer height="auto">
+    <v-card  width="100%"
       flat
       tile
       class="text-xs-center grey darken-4"
@@ -16,6 +17,7 @@
       </v-card-text>
     </v-card>
   </v-footer>
+</v-container>
 </template>
 
 <script>
