@@ -1,4 +1,4 @@
-![](art/ss.png)
+![](art/preview.png)
 
 ## Build Setup
 
