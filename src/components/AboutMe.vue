@@ -1,9 +1,7 @@
 <template>
-  <div>
-      <v-container grid-list-md text-xs-center>
-        About me
-      </v-container>
-  </div>
+    <v-container grid-list-md text-xs-center>
+        
+    </v-container>
 </template>
 
 <style>
