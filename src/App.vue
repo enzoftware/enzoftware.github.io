@@ -8,10 +8,10 @@
         <about-me/>
       </div>
       <div class="section">
-        Skills
+        <technologies/>
       </div>
       <div class="section">
-        Projects
+        My favorites projects 
       </div>
       <div class="section fp-auto-height">
         <personal-footer/>
@@ -34,6 +34,7 @@
   import PersonalFooter from './components/PersonalFooter.vue'
   import Home from './components/Home.vue'
   import AboutMe from './components/AboutMe.vue'
+  import Technologies from './components/Technologies.vue'
 
 
   $(document).ready(function() {
@@ -41,8 +42,9 @@
       sectionsColor : ['#212121', '#212121',"#212121","#212121","#212121"],
       scrollingSpeed: 1000,
       navigation: true,
-      anchors : ['Home','About','Skills','Projects'],
-      navigationTooltips: ['Home','About','Skills','Projects']
+      anchors : ['Home','About','Technologies','Projects'],
+      navigationTooltips: ['Home','About','Skills','Projects'],
+      scrollOverflow: true
     });
   });
 
@@ -55,7 +57,8 @@
     components:{
       PersonalFooter,
       Home,
-      AboutMe
+      AboutMe,
+      Technologies
     }
   }
   
