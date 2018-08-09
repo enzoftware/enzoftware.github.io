@@ -11,7 +11,7 @@
         <technologies/>
       </div>
       <div class="section">
-        My favorites projects 
+        <fav-projects/> 
       </div>
       <div class="section fp-auto-height">
         <personal-footer/>
@@ -35,6 +35,7 @@
   import Home from './components/Home.vue'
   import AboutMe from './components/AboutMe.vue'
   import Technologies from './components/Technologies.vue'
+  import FavProjects from './components/FavoritesProjects.vue'
 
 
   $(document).ready(function() {
@@ -58,7 +59,8 @@
       PersonalFooter,
       Home,
       AboutMe,
-      Technologies
+      Technologies,
+      FavProjects
     }
   }
   

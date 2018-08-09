@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <div class="display-2">
+        <div>
             <h1>My favorites technologies</h1>    
         </div>
           <v-layout row wrap>
@@ -17,9 +17,12 @@
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=VT323|Zilla+Slab+Highlight');
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
 h1{
-    font-family: 'VT323', monospace;
+    font-family: 'Fira Mono', monospace;
     color: #ffffff;
+    font-size: 46px;
+    font-weight: bold;
 }
 
 .tech{

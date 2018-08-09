@@ -9,10 +9,10 @@
       <v-card-text>
         <social-networks/>
       </v-card-text>
-      <v-card-text class="white--text pt-0 title">
+      <v-card-text class="white--text pt-0 title quote">
         Hello World!
       </v-card-text>
-      <v-card-text class="white--text subheading">
+      <v-card-text class="white--text subheading quote">
         &copy;2018 — <strong>{{username}}</strong>
       </v-card-text>
     </v-card>
@@ -35,8 +35,13 @@
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
 .theme--light{
   background-color: #212121 !important; 
+}
+
+.quote{
+  font-family: 'Fira Mono', monospace;
 }
 
 
