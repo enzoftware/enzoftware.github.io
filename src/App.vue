@@ -43,7 +43,7 @@
       scrollingSpeed: 1000,
       navigation: true,
       anchors : ['Home','About','Technologies','Projects'],
-      navigationTooltips: ['Home','About','Skills','Projects'],
+      navigationTooltips: ['Home','About','Technologies','Projects'],
       scrollOverflow: true
     });
   });

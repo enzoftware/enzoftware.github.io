@@ -5,11 +5,11 @@
         </div>
           <v-layout row wrap>
             <v-flex>
-            <a href="https://github.com/enzoftware?utf8=%E2%9C%93&tab=repositories&q=android" target="_blank"><img height="210px" class="tech" src="/public/images/android.png"></a>
-            <a href="https://github.com/enzoftware?utf8=✓&tab=repositories&q=firebase"><img height="210px" class="tech" src="/public/images/firebase.png"></a>
-            <a href="https://github.com/enzoftware?utf8=%E2%9C%93&tab=repositories&q=vue" target="_blank"><img height="210px" class="tech" src="/public/images/vue.png"></a>
-            <a href="https://github.com/enzoftware?utf8=✓&tab=repositories&q=nodejs"><img height="210px" class="tech" src="/public/images/nodejs.png"></a>
-            <a href="https://github.com/enzoftware?utf8=✓&tab=repositories&q=python"><img height="210px" class="tech" src="/public/images/python.png"></a>
+                <a href="https://github.com/enzoftware?utf8=%E2%9C%93&tab=repositories&q=android"   target="_blank"><img height="210px" class="tech" src="/public/images/android.png"></a>
+                <a href="https://github.com/enzoftware?utf8=✓&tab=repositories&q=firebase"          target="_blank"><img height="210px" class="tech" src="/public/images/firebase.png"></a>
+                <a href="https://github.com/enzoftware?utf8=%E2%9C%93&tab=repositories&q=vue"       target="_blank"><img height="210px" class="tech" src="/public/images/vue.png"></a>
+                <a href="https://github.com/enzoftware?utf8=✓&tab=repositories&q=nodejs"            target="_blank"><img height="210px" class="tech" src="/public/images/nodejs.png"></a>
+                <a href="https://github.com/enzoftware?utf8=✓&tab=repositories&q=python"            target="_blank"><img height="210px" class="tech" src="/public/images/python.png"></a>
             </v-flex>
           </v-layout>
         </v-container>
