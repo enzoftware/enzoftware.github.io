@@ -1,4 +1,7 @@
 ![](art/preview.png)
+## TODO's
+- [ ] Vuetify cards
+- [ ] Fetch data from github graphql api from my pinned repositories
 
 ## Build Setup
 
