@@ -16,34 +16,34 @@
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=VT323|Zilla+Slab+Highlight');
-@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
-h1{
-    font-family: 'Fira Mono', monospace;
-    color: #ffffff;
-    font-size: 46px;
-    font-weight: bold;
-}
+    @import url('https://fonts.googleapis.com/css?family=VT323|Zilla+Slab+Highlight');
+    @import url('https://fonts.googleapis.com/css?family=Fira+Mono');
+    h1{
+        font-family: 'Fira Mono', monospace;
+        color: #ffffff;
+        font-size: 46px;
+        font-weight: bold;
+    }
 
-.tech{
-    margin: 20px;
-    opacity: 0.5;
-    transition:all 0.3s ease;
-}
+    .tech{
+        margin: 20px;
+        opacity: 0.5;
+        transition:all 0.3s ease;
+    }
 
-.tech:hover{
-    opacity: 1;
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-}
+    .tech:hover{
+        opacity: 1;
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+    }
 
 </style>
 
 <script>
-export default {
-     data: () => ({
-      
-    })
-}
+    export default {
+        data: () => ({
+        
+        })
+    }
 </script>
