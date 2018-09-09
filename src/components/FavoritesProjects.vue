@@ -2,7 +2,7 @@
     <v-container>
         <h1>Mis proyectos favoritos</h1>  
         <v-flex xs12 v-for="project in projects" v-bind:key="project" class="project-card" justify-center>
-            <v-card :color="project.color" class="white--text" justify-center>
+            <v-card :color="project.color" class="black--text" justify-center>
                 <v-layout>
                     <v-flex >
                         <v-card-title primary-title class="top_card_project">
@@ -66,11 +66,10 @@
         data: () => ({
             projects: [{
                     title: 'Cryptocurrency Tracker',
-                    stars: 2,
+                    stars: 1,
                     repo: 'https://github.com/enzoftware/crypto-tracker',
                     language: 'Kotlin',
-                    tech: 'Android',
-                    color: 'teal accent-4',
+                    color: 'green',
                     description: 'Cryptocurency tracker price and latest change for the price of crypto currencies like Bitcoin, Ethereum, Litecoin and more.'
                 },
                 {
@@ -78,36 +77,32 @@
                     stars: 4,
                     repo: 'https://github.com/enzoftware/flask-quotes',
                     language: 'Python',
-                    tech: 'Flask',
                     color: 'purple',
                     description: 'Motivational quotes website build with flask ❤️ 😄'
                 },
                 {
-                    title: 'Flask Quotes',
-                    stars: 4,
-                    repo: 'https://github.com/enzoftware/flask-quotes',
-                    language: 'Python',
-                    tech: 'Flask',
-                    color: 'purple',
-                    description: 'Motivational quotes website build with flask ❤️ 😄'
+                    title: 'Algorithms and Data Structures',
+                    stars: 12,
+                    repo: 'https://github.com/enzoftware/algorithms-and-data-structures',
+                    language: 'C++',
+                    color: 'pink',
+                    description: 'Course of algorithm and data structure. Section CC68. UPC-MO'
                 },
                 {
-                    title: 'Flask Quotes',
-                    stars: 4,
-                    repo: 'https://github.com/enzoftware/flask-quotes',
-                    language: 'Python',
-                    tech: 'Flask',
-                    color: 'purple',
-                    description: 'Motivational quotes website build with flask ❤️ 😄'
+                    title: 'Images Processing',
+                    stars: 9,
+                    repo: 'https://github.com/enzoftware/images-processing',
+                    language: 'Java',
+                    color: 'orange',
+                    description: 'Project of computational mathematics, image processing, eliminating the noise of an image, reflection of an image and canny filter'
                 },
                 {
-                    title: 'Flask Quotes',
-                    stars: 4,
-                    repo: 'https://github.com/enzoftware/flask-quotes',
-                    language: 'Python',
-                    tech: 'Flask',
-                    color: 'purple',
-                    description: 'Motivational quotes website build with flask ❤️ 😄'
+                    title: 'Outside CLI',
+                    stars: 2,
+                    repo: 'https://github.com/enzoftware/outside',
+                    language: 'Javascript',
+                    color: 'yellow',
+                    description: '🌈 ☀️ ☔️ Beauty and simple CLI for know the weather.'
                 },
             ]
         })
