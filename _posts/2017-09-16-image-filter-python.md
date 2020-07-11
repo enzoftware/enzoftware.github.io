@@ -6,12 +6,10 @@ description: Let's implement some interesting filters to the images with Python
 tags: [python]
 ---
 
-# How to build amazing image filters with Python— Median filter 📷 , Sobel filter ⚫️ ⚪️
-
 Nowadays, I’m starting in a new programming language : Python 🐍 . And I am pleased to share some of my knowledge about this new topic , which is image processing.
 ![digital image processing](https://cdn-images-1.medium.com/max/2000/1*6N1clEI8EInQ5I8MWaOUSQ.png)
 
-## What is digital image processing ?
+## What is digital image processing
 
 It is a set of techniques whose objective is to obtain a result with a specific application from a source image, improving certain characteristics that allow you to extract information from the image.
 OK , After a short introduction about the meaning of image processing, Let’s continue with the filters that I will show you in this post.
@@ -19,11 +17,11 @@ OK , After a short introduction about the meaning of image processing, Let’s c
 ## Median filter
 
 ![Median filter](https://cdn-images-1.medium.com/max/800/1*VyzJxDrLrC-OqkV5LHhjQQ.gif)
-Taken from http://artemhlezin.com/2016/09/04/median.html
+Taken from [Artemlezin Blog](http://artemhlezin.com/2016/09/04/median.html)
 This filter is used to eliminate the ‘noise’ of the images, mainly is salt-n-pepper noise.
 There is not much theory beyond the one in the picture. This is how the filter works : gets all the values inside a mask, sorts them and then assigns the mean value to the coordinate.
 This is how it looks an image with salt and pepper noise :
-![](https://cdn-images-1.medium.com/max/800/1*UmRXiE--hLWK1g0MYeLBXQ.png)
+![image python](https://cdn-images-1.medium.com/max/800/1*UmRXiE--hLWK1g0MYeLBXQ.png)
 In Python 🐍 the filter works like this, enter to check the result:
 
 ```python
@@ -157,15 +155,15 @@ And this is the result :
 ## Conclusion
 
 I mentioned that there is much more theory about this subject; so, I will leave some articles that, in my opinion, are the most complete and better explained in the web.
-References
-Saush Blog’s , good description about sobel operator and other image processing filter.
-https://blog.saush.com
-An edge detection implementation in C++.
-https://stackoverflow.com/questions/40445415/sobel-edge-detection-implementation
-A detailed article about of median filter.
-http://fourier.eng.hmc.edu/e161/lectures/smooth_sharpen/node2.htm
-Another implementation of Sobel filter.
-http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm
+
+### References
+
+- [Saush Blog’s , good description about sobel operator and other image processing filter.](https://blog.saush.com)
+
+- [An edge detection implementation in C++.](https://stackoverflow.com/questions/40445415/sobel-edge-detection-implementation)
+
+- [A detailed article about of median filter.](http://fourier.eng.hmc.edu/e161/lectures/smooth_sharpen/node2.htm)
+  [http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm](Another implementation of Sobel filter.)
 
 Thanks for reading this little post , totally open to feedback. Questions in the comment box and show your support 👏❤️ .
 You can watch my open-source projects in my [Github](https://github.com/enzoftware) account.

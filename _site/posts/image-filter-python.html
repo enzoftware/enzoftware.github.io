@@ -50,15 +50,6 @@
   <a href="/" class="header-logo" title="enzoftware's blog">enzoftware's blog</a>
   <ul class="header-links">
     
-      <li>
-        <a href="/about" title="About me">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon-about">
-  <use href="/assets/about-ecf154b571ab8034ae00aeed91a3b7ad68db80b46d958753ad6216c919486e88.svg#icon-about" xlink:href="/assets/about-ecf154b571ab8034ae00aeed91a3b7ad68db80b46d958753ad6216c919486e88.svg#icon-about"></use>
-</svg>
-
-        </a>
-      </li>
-    
     
       <li>
         <a href="https://twitter.com/enzoftware" rel="noreferrer noopener" target="_blank" title="Twitter">
@@ -177,12 +168,10 @@
           </header>
 
           <div class="article-content">
-            <h1 id="how-to-build-amazing-image-filters-with-python-median-filter---sobel-filter-️-️">How to build amazing image filters with Python— Median filter 📷 , Sobel filter ⚫️ ⚪️</h1>
-
-<p>Nowadays, I’m starting in a new programming language : Python 🐍 . And I am pleased to share some of my knowledge about this new topic , which is image processing.
+            <p>Nowadays, I’m starting in a new programming language : Python 🐍 . And I am pleased to share some of my knowledge about this new topic , which is image processing.
 <img src="https://cdn-images-1.medium.com/max/2000/1*6N1clEI8EInQ5I8MWaOUSQ.png" alt="digital image processing" /></p>
 
-<h2 id="what-is-digital-image-processing-">What is digital image processing ?</h2>
+<h2 id="what-is-digital-image-processing">What is digital image processing</h2>
 
 <p>It is a set of techniques whose objective is to obtain a result with a specific application from a source image, improving certain characteristics that allow you to extract information from the image.
 OK , After a short introduction about the meaning of image processing, Let’s continue with the filters that I will show you in this post.</p>
@@ -190,11 +179,11 @@ OK , After a short introduction about the meaning of image processing, Let’s c
 <h2 id="median-filter">Median filter</h2>
 
 <p><img src="https://cdn-images-1.medium.com/max/800/1*VyzJxDrLrC-OqkV5LHhjQQ.gif" alt="Median filter" />
-Taken from http://artemhlezin.com/2016/09/04/median.html
+Taken from <a href="http://artemhlezin.com/2016/09/04/median.html">Artemlezin Blog</a>
 This filter is used to eliminate the ‘noise’ of the images, mainly is salt-n-pepper noise.
 There is not much theory beyond the one in the picture. This is how the filter works : gets all the values inside a mask, sorts them and then assigns the mean value to the coordinate.
 This is how it looks an image with salt and pepper noise :
-<img src="https://cdn-images-1.medium.com/max/800/1*UmRXiE--hLWK1g0MYeLBXQ.png" alt="" />
+<img src="https://cdn-images-1.medium.com/max/800/1*UmRXiE--hLWK1g0MYeLBXQ.png" alt="image python" />
 In Python 🐍 the filter works like this, enter to check the result:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -325,16 +314,22 @@ In Python 🐍 the filter works like this, enter to check the result:</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>I mentioned that there is much more theory about this subject; so, I will leave some articles that, in my opinion, are the most complete and better explained in the web.
-References
-Saush Blog’s , good description about sobel operator and other image processing filter.
-https://blog.saush.com
-An edge detection implementation in C++.
-https://stackoverflow.com/questions/40445415/sobel-edge-detection-implementation
-A detailed article about of median filter.
-http://fourier.eng.hmc.edu/e161/lectures/smooth_sharpen/node2.htm
-Another implementation of Sobel filter.
-http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm</p>
+<p>I mentioned that there is much more theory about this subject; so, I will leave some articles that, in my opinion, are the most complete and better explained in the web.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li>
+    <p><a href="https://blog.saush.com">Saush Blog’s , good description about sobel operator and other image processing filter.</a></p>
+  </li>
+  <li>
+    <p><a href="https://stackoverflow.com/questions/40445415/sobel-edge-detection-implementation">An edge detection implementation in C++.</a></p>
+  </li>
+  <li>
+    <p><a href="http://fourier.eng.hmc.edu/e161/lectures/smooth_sharpen/node2.htm">A detailed article about of median filter.</a>
+<a href="Another implementation of Sobel filter.">http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm</a></p>
+  </li>
+</ul>
 
 <p>Thanks for reading this little post , totally open to feedback. Questions in the comment box and show your support 👏❤️ .
 You can watch my open-source projects in my <a href="https://github.com/enzoftware">Github</a> account.</p>
