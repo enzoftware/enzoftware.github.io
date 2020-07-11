@@ -65,3 +65,18 @@
     asset_url('lato/Lato-700.woff') format('woff'),
     asset_url('lato/Lato-700.ttf') format('truetype');
 }
+
+
+@font-face {
+  font-family: 'GoogleSans';
+  font-style: normal;
+  font-weight: 700;
+  src: asset_url('google-sans/ProductSans-Regular.ttf');
+  // src:
+  //   asset_url('lato/Lato-700.eot?#iefix') format('embedded-opentype'),
+  //   local('Lato Bold'),
+  //   local('Lato-700'),
+  //   asset_url('lato/Lato-700.woff2') format('woff2'),
+  //   asset_url('lato/Lato-700.woff') format('woff'),
+  //   asset_url('google-sans/ProductSans-Regular.ttf') format('truetype');
+}
