@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>enzoftware's blog | Let’s play with the Android accelerometer + Kotlin </title>
+  <meta name="description" content="Taking a look into sensors in Android devices. How it works and how can we take advantage of it.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Let’s play with the Android accelerometer + Kotlin ">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="enzoftware.github.io/posts/android-accelerometer">
+  <meta property="og:description" content="Taking a look into sensors in Android devices. How it works and how can we take advantage of it.">
+  <meta property="og:site_name" content="enzoftware's blog">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="enzoftware.github.io/posts/android-accelerometer">
+  <meta name="twitter:title" content="Let’s play with the Android accelerometer + Kotlin ">
+  <meta name="twitter:description" content="Taking a look into sensors in Android devices. How it works and how can we take advantage of it.">
+
+  
+    <meta property="og:image" content="enzoftware.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+    <meta name="twitter:image" content="enzoftware.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+  
+
+  <link href="enzoftware.github.io/feed.xml" type="application/rss+xml" rel="alternate" title="enzoftware's blog Last 10 blog posts" />
+
+  
+    <link rel="stylesheet" type="text/css" href="/assets/fonts-861813e737e0de7493c47e87d6b44b38cbd9f0e4fa030738d06c98aa231f215f.css">
+  
+
+  
+
+    
+      <link rel="icon" type="image/x-icon" href="/assets/favicon-dark-11327753546b2135c989eee5cd83497a2734b702928d016839d795f6c706e3d5.ico">
+      <link rel="apple-touch-icon" href="/assets/apple-touch-icon-dark-d161409442b7e523089f24d08d0a55951549ece7504207c376d53b020713494d.png">
+      <link rel="stylesheet" type="text/css" title="light" id="light" href="/assets/light-07e9a3eab8d2fbd65fabc22d14ede4ec70fb55479092fb15d7ae7c559d9558b0.css">
+      <link rel="stylesheet" type="text/css" title="dark" id="dark" href="/assets/dark-4ba80379af524230f25ac7249e8097668e8c5485c0fecad6e2ca97cbc33daced.css" disabled="false">
+    
+
+  
+
+</head>
+
+<body>
+  <main>
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav scrollappear">
+  <a href="/" class="header-logo" title="enzoftware's blog">enzoftware's blog</a>
+  <ul class="header-links">
+    
+    
+      <li>
+        <a href="https://twitter.com/enzoftware" rel="noreferrer noopener" target="_blank" title="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-twitter">
+  <use href="/assets/twitter-8842c33965263ad1b03a978406826677a668f94125d5837e70ab83f24b3213a7.svg#icon-twitter" xlink:href="/assets/twitter-8842c33965263ad1b03a978406826677a668f94125d5837e70ab83f24b3213a7.svg#icon-twitter"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a href="https://medium.com/@enzoftware" rel="noreferrer noopener" target="_blank" title="Medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-medium">
+  <use href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium" xlink:href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://github.com/enzoftware" rel="noreferrer noopener" target="_blank" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-github">
+  <use href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github" xlink:href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+      <li>
+        <a href="https://stackoverflow.com/users/7966313" rel="noreferrer noopener" target="_blank" title="Stack Overflow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-stackoverflow">
+  <use href="/assets/stackoverflow-12ba59133ed134d26156d30f095e0222b6039395cf26f2fab0cb6ce3ef2db00d.svg#icon-stackoverflow" xlink:href="/assets/stackoverflow-12ba59133ed134d26156d30f095e0222b6039395cf26f2fab0cb6ce3ef2db00d.svg#icon-stackoverflow"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+      <li>
+        <a href="https://www.linkedin.com/in/enzolizama" rel="noreferrer noopener" target="_blank" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-linkedin">
+  <use href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin" xlink:href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li>
+        <a href="mailto:lizama.enzo@gmail.com" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-email">
+  <use href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email" xlink:href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a onclick="toggle()" title="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-theme">
+  <use href="/assets/theme-66869e0bf8dab34bae1c86bda400327b772e0be69e8dc28d3ede896e771320ed.svg#icon-theme" xlink:href="/assets/theme-66869e0bf8dab34bae1c86bda400327b772e0be69e8dc28d3ede896e771320ed.svg#icon-theme"></use>
+</svg>
+
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+
+        <article class="article scrollappear">
+          <header class="article-header">
+            <h1>Let’s play with the Android accelerometer + Kotlin </h1>
+            <p>Taking a look into sensors in Android devices. How it works and how can we take advantage of it.</p>
+            <div class="article-list-footer">
+  <span class="article-list-date">
+    December 20, 2017
+  </span>
+  <span class="article-list-divider">-</span>
+  <span class="article-list-minutes">
+    
+    
+      8 minute read
+    
+  </span>
+  <span class="article-list-divider">-</span>
+  <div class="article-list-tags">
+    
+      
+      <a href="/tag/kotlin" title="See all posts with tag 'Kotlin'">Kotlin</a>
+    
+      
+      <a href="/tag/android" title="See all posts with tag 'Android'">Android</a>
+    
+  </div>
+</div>
+          </header>
+
+          <div class="article-content">
+            <p>This post was originally published on <a href="https://medium.com/@enzoftware/lets-play-with-the-android-accelerometer-kotlin-%EF%B8%8F-ed92981b0a6c">Medium</a></p>
+
+<h1 id="general-aspects-about-sensors">General aspects about sensors</h1>
+
+<p>Android devices tend to be accompanied with a series of sensors that make the device to interact with the environment that surrounds it.</p>
+
+<p>And that’s already great to have a range of possibilities about what we can do in our applications,these sensors allow the terminal to have a knowledge of the environment that surrounds you,but the sensors are nothing more than electronic parts that capture information from outside and it is the application which should transform this information into data to work them.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*HgTref-c5Lh_kX33yQC8-g.jpeg" alt="sensors"></p>
+
+<p>The activities who works with sensors must implement the interface SensorEventListener that will force us to implement the methods <strong>onAccuracyChanged()</strong> y <strong>onSensorChanged()</strong> .</p>
+
+<p>The method <strong>onAccuracyChanged()</strong> will be executed when the precision of a sensor change , while <strong>onSensorChanged()</strong> will do it every time there is a change in one of the sensors.</p>
+
+<h2 id="building-an-accelerometer-app">Building an accelerometer app</h2>
+
+<p>The topic of sensors in android is tremendously big and it can’t be covered at all in one article, so for this occasion we will be build an accelerometer app, metallball 💥.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*XvbMaUpE-EWxZ-2ZTjppgw.gif" alt="final app"></p>
+
+<p>But first a little bit about this sensor in specific.</p>
+
+<h2 id="accelerometer">Accelerometer</h2>
+
+<p>With this kind of sensor it’s possible to determinate the orientation of the terminal in the real world 🌎 , considering as coordinate axis the middle point of the device.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*oyiKkfu-3zGIIqwk9mLIzw.png" alt="device"></p>
+
+<p>The accelerometer calculates the linear acceleration in each of the 3 axes (x, y, z); each axis has its own accelerometer, so that the data can be received individually.</p>
+
+<h2 id="the-app-code">The app code</h2>
+
+<p>In the <strong>MainActivity</strong> file you access to the vibration service, for that reason don’t forget to copy this into the <strong>AndroidManifest</strong> file.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">&lt;</span><span class="n">uses-permission</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="p">=</span><span class="s">"android.permission.VIBRATE"</span> <span class="p">/&gt;</span>
+</code></pre></div></div>
+
+<p>Here is the full code of the app, If you have questions, post it to be able to answer.</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">com.projects.enzoftware.metalball</span>
+
+<span class="k">import</span> <span class="nn">android.app.Service</span>
+<span class="k">import</span> <span class="nn">android.bluetooth.BluetoothClass</span>
+<span class="k">import</span> <span class="nn">android.content.Context</span>
+<span class="k">import</span> <span class="nn">android.content.pm.ActivityInfo</span>
+<span class="k">import</span> <span class="nn">android.graphics.Bitmap</span>
+<span class="k">import</span> <span class="nn">android.graphics.BitmapFactory</span>
+<span class="k">import</span> <span class="nn">android.graphics.Canvas</span>
+<span class="k">import</span> <span class="nn">android.graphics.Point</span>
+<span class="k">import</span> <span class="nn">android.hardware.Sensor</span>
+<span class="k">import</span> <span class="nn">android.hardware.SensorEvent</span>
+<span class="k">import</span> <span class="nn">android.hardware.SensorEventListener</span>
+<span class="k">import</span> <span class="nn">android.hardware.SensorManager</span>
+<span class="k">import</span> <span class="nn">android.os.Build</span>
+<span class="k">import</span> <span class="nn">android.support.v7.app.AppCompatActivity</span>
+<span class="k">import</span> <span class="nn">android.os.Bundle</span>
+<span class="k">import</span> <span class="nn">android.os.Vibrator</span>
+<span class="k">import</span> <span class="nn">android.view.*</span>
+
+<span class="kd">class</span> <span class="nc">MetalBall</span> <span class="p">:</span> <span class="nc">AppCompatActivity</span><span class="p">()</span> <span class="p">,</span> <span class="nc">SensorEventListener</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">mSensorManager</span> <span class="p">:</span> <span class="nc">SensorManager</span> <span class="p">?=</span> <span class="k">null</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">mAccelerometer</span> <span class="p">:</span> <span class="nc">Sensor</span> <span class="p">?=</span> <span class="k">null</span>
+    <span class="kd">var</span> <span class="py">ground</span> <span class="p">:</span> <span class="nc">GroundView</span> <span class="p">?=</span> <span class="k">null</span>
+
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">:</span> <span class="nc">Bundle</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="nf">requestWindowFeature</span><span class="p">(</span><span class="nc">Window</span><span class="p">.</span><span class="nc">FEATURE_NO_TITLE</span><span class="p">)</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">)</span>
+        <span class="c1">// get reference of the service</span>
+        <span class="n">mSensorManager</span> <span class="p">=</span> <span class="nf">getSystemService</span><span class="p">(</span><span class="nc">Context</span><span class="p">.</span><span class="nc">SENSOR_SERVICE</span><span class="p">)</span> <span class="k">as</span> <span class="nc">SensorManager</span>
+        <span class="c1">// focus in accelerometer</span>
+        <span class="n">mAccelerometer</span> <span class="p">=</span> <span class="n">mSensorManager</span><span class="o">!!</span><span class="p">.</span><span class="nf">getDefaultSensor</span><span class="p">(</span><span class="nc">Sensor</span><span class="p">.</span><span class="nc">TYPE_ACCELEROMETER</span><span class="p">)</span>
+        <span class="c1">// setup the window</span>
+        <span class="n">requestedOrientation</span> <span class="p">=</span> <span class="nc">ActivityInfo</span><span class="p">.</span><span class="nc">SCREEN_ORIENTATION_LANDSCAPE</span>
+
+        <span class="n">window</span><span class="p">.</span><span class="nf">setFlags</span><span class="p">(</span><span class="nc">WindowManager</span><span class="p">.</span><span class="nc">LayoutParams</span><span class="p">.</span><span class="nc">FLAG_FULLSCREEN</span><span class="p">,</span>
+                        <span class="nc">WindowManager</span><span class="p">.</span><span class="nc">LayoutParams</span><span class="p">.</span><span class="nc">FLAG_FULLSCREEN</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION</span><span class="p">.</span><span class="nc">SDK_INT</span> <span class="p">&gt;=</span> <span class="nc">Build</span><span class="p">.</span><span class="nc">VERSION_CODES</span><span class="p">.</span><span class="nc">HONEYCOMB</span><span class="p">){</span>
+            <span class="n">window</span><span class="p">.</span><span class="n">decorView</span><span class="p">.</span><span class="n">systemUiVisibility</span> <span class="p">=</span>   <span class="nc">View</span><span class="p">.</span><span class="nc">SYSTEM_UI_FLAG_LAYOUT_STABLE</span>
+            <span class="nc">View</span><span class="p">.</span><span class="nc">SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</span>
+            <span class="nc">View</span><span class="p">.</span><span class="nc">SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</span>
+            <span class="nc">View</span><span class="p">.</span><span class="nc">SYSTEM_UI_FLAG_HIDE_NAVIGATION</span>
+            <span class="nc">View</span><span class="p">.</span><span class="nc">SYSTEM_UI_FLAG_FULLSCREEN</span>
+            <span class="nc">View</span><span class="p">.</span><span class="nc">SYSTEM_UI_FLAG_IMMERSIVE</span>
+        <span class="p">}</span>
+
+        <span class="c1">// set the view</span>
+        <span class="n">ground</span> <span class="p">=</span> <span class="nc">GroundView</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="nf">setContentView</span><span class="p">(</span><span class="n">ground</span><span class="p">)</span>
+    <span class="p">}</span>
+
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onAccuracyChanged</span><span class="p">(</span><span class="n">sensor</span><span class="p">:</span> <span class="nc">Sensor</span><span class="p">?,</span> <span class="n">accuracy</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onSensorChanged</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nc">SensorEvent</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">event</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ground</span><span class="o">!!</span><span class="p">.</span><span class="nf">updateMe</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">event</span><span class="p">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onResume</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onResume</span><span class="p">()</span>
+        <span class="n">mSensorManager</span><span class="o">!!</span><span class="p">.</span><span class="nf">registerListener</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="n">mAccelerometer</span><span class="p">,</span>
+                                        <span class="nc">SensorManager</span><span class="p">.</span><span class="nc">SENSOR_DELAY_GAME</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onPause</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">onPause</span><span class="p">()</span>
+        <span class="n">mSensorManager</span><span class="o">!!</span><span class="p">.</span><span class="nf">unregisterListener</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">class</span> <span class="nc">DrawThread</span> <span class="p">(</span><span class="n">surfaceHolder</span><span class="p">:</span> <span class="nc">SurfaceHolder</span> <span class="p">,</span> <span class="n">panel</span> <span class="p">:</span> <span class="nc">GroundView</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Thread</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">private</span> <span class="kd">var</span> <span class="py">surfaceHolder</span> <span class="p">:</span><span class="nc">SurfaceHolder</span> <span class="p">?=</span> <span class="k">null</span>
+        <span class="k">private</span> <span class="kd">var</span> <span class="py">panel</span> <span class="p">:</span> <span class="nc">GroundView</span> <span class="p">?=</span> <span class="k">null</span>
+        <span class="k">private</span> <span class="kd">var</span> <span class="py">run</span> <span class="p">=</span> <span class="k">false</span>
+
+        <span class="nf">init</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">surfaceHolder</span> <span class="p">=</span> <span class="n">surfaceHolder</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">panel</span> <span class="p">=</span> <span class="n">panel</span>
+        <span class="p">}</span>
+
+        <span class="k">fun</span> <span class="nf">setRunning</span><span class="p">(</span><span class="n">run</span> <span class="p">:</span> <span class="nc">Boolean</span><span class="p">){</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">run</span> <span class="p">=</span> <span class="n">run</span>
+        <span class="p">}</span>
+
+        <span class="k">override</span> <span class="k">fun</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="py">c</span><span class="p">:</span> <span class="nc">Canvas</span> <span class="p">?=</span> <span class="k">null</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">run</span><span class="p">){</span>
+                <span class="n">c</span> <span class="p">=</span> <span class="k">null</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="n">c</span> <span class="p">=</span> <span class="n">surfaceHolder</span><span class="o">!!</span><span class="p">.</span><span class="nf">lockCanvas</span><span class="p">(</span><span class="k">null</span><span class="p">)</span>
+                    <span class="nf">synchronized</span><span class="p">(</span><span class="n">surfaceHolder</span><span class="o">!!</span><span class="p">){</span>
+                        <span class="n">panel</span><span class="o">!!</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span><span class="k">finally</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">!=</span> <span class="k">null</span><span class="p">){</span>
+                        <span class="n">surfaceHolder</span><span class="o">!!</span><span class="p">.</span><span class="nf">unlockCanvasAndPost</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+
+<span class="kd">class</span> <span class="nc">GroundView</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="nc">Context</span><span class="p">?)</span> <span class="p">:</span> <span class="nc">SurfaceView</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="nc">SurfaceHolder</span><span class="p">.</span><span class="nc">Callback</span><span class="p">{</span>
+
+    <span class="c1">// ball coordinates</span>
+    <span class="kd">var</span> <span class="py">cx</span> <span class="p">:</span> <span class="nc">Float</span> <span class="p">=</span> <span class="mi">10</span><span class="p">.</span><span class="nf">toFloat</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="py">cy</span> <span class="p">:</span> <span class="nc">Float</span> <span class="p">=</span> <span class="mi">10</span><span class="p">.</span><span class="nf">toFloat</span><span class="p">()</span>
+
+    <span class="c1">// last position increment</span>
+
+    <span class="kd">var</span> <span class="py">lastGx</span> <span class="p">:</span> <span class="nc">Float</span> <span class="p">=</span> <span class="mi">0</span><span class="p">.</span><span class="nf">toFloat</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="py">lastGy</span> <span class="p">:</span> <span class="nc">Float</span> <span class="p">=</span> <span class="mi">0</span><span class="p">.</span><span class="nf">toFloat</span><span class="p">()</span>
+
+    <span class="c1">// graphic size of the ball</span>
+
+    <span class="kd">var</span> <span class="py">picHeight</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="py">picWidth</span> <span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+
+    <span class="kd">var</span> <span class="py">icon</span><span class="p">:</span><span class="nc">Bitmap</span> <span class="p">?=</span> <span class="k">null</span>
+
+    <span class="c1">// window size</span>
+
+    <span class="kd">var</span> <span class="py">Windowwidth</span> <span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="py">Windowheight</span> <span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+
+    <span class="c1">// is touching the edge ?</span>
+
+    <span class="kd">var</span> <span class="py">noBorderX</span> <span class="p">=</span> <span class="k">false</span>
+    <span class="kd">var</span> <span class="py">noBorderY</span> <span class="p">=</span> <span class="k">false</span>
+
+    <span class="kd">var</span> <span class="py">vibratorService</span> <span class="p">:</span> <span class="nc">Vibrator</span> <span class="p">?=</span> <span class="k">null</span>
+    <span class="kd">var</span> <span class="py">thread</span> <span class="p">:</span> <span class="nc">MetalBall</span><span class="p">.</span><span class="nc">DrawThread</span><span class="p">?=</span> <span class="k">null</span>
+
+
+
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="n">holder</span><span class="p">.</span><span class="nf">addCallback</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+        <span class="c1">//create a thread</span>
+        <span class="n">thread</span> <span class="p">=</span> <span class="nc">MetalBall</span><span class="p">.</span><span class="nc">DrawThread</span><span class="p">(</span><span class="n">holder</span><span class="p">,</span> <span class="k">this</span><span class="p">)</span>
+        <span class="c1">// get references and sizes of the objects</span>
+        <span class="kd">val</span> <span class="py">display</span><span class="p">:</span> <span class="nc">Display</span> <span class="p">=</span> <span class="p">(</span><span class="nf">getContext</span><span class="p">().</span><span class="nf">getSystemService</span><span class="p">(</span><span class="nc">Context</span><span class="p">.</span><span class="nc">WINDOW_SERVICE</span><span class="p">)</span> <span class="k">as</span> <span class="nc">WindowManager</span><span class="p">).</span><span class="n">defaultDisplay</span>
+        <span class="kd">val</span> <span class="py">size</span><span class="p">:</span><span class="nc">Point</span> <span class="p">=</span> <span class="nc">Point</span><span class="p">()</span>
+        <span class="n">display</span><span class="p">.</span><span class="nf">getSize</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+        <span class="nc">Windowwidth</span> <span class="p">=</span> <span class="n">size</span><span class="p">.</span><span class="n">x</span>
+        <span class="nc">Windowheight</span> <span class="p">=</span> <span class="n">size</span><span class="p">.</span><span class="n">y</span>
+        <span class="n">icon</span> <span class="p">=</span> <span class="nc">BitmapFactory</span><span class="p">.</span><span class="nf">decodeResource</span><span class="p">(</span><span class="n">resources</span><span class="p">,</span><span class="nc">R</span><span class="p">.</span><span class="n">drawable</span><span class="p">.</span><span class="n">ball</span><span class="p">)</span>
+        <span class="n">picHeight</span> <span class="p">=</span> <span class="n">icon</span><span class="o">!!</span><span class="p">.</span><span class="n">height</span>
+        <span class="n">picWidth</span> <span class="p">=</span> <span class="n">icon</span><span class="o">!!</span><span class="p">.</span><span class="n">width</span>
+        <span class="n">vibratorService</span> <span class="p">=</span> <span class="p">(</span><span class="nf">getContext</span><span class="p">().</span><span class="nf">getSystemService</span><span class="p">(</span><span class="nc">Service</span><span class="p">.</span><span class="nc">VIBRATOR_SERVICE</span><span class="p">))</span> <span class="k">as</span> <span class="nc">Vibrator</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">surfaceChanged</span><span class="p">(</span><span class="n">holder</span><span class="p">:</span> <span class="nc">SurfaceHolder</span><span class="p">?,</span> <span class="n">format</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">surfaceDestroyed</span><span class="p">(</span><span class="n">holder</span><span class="p">:</span> <span class="nc">SurfaceHolder</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">surfaceCreated</span><span class="p">(</span><span class="n">holder</span><span class="p">:</span> <span class="nc">SurfaceHolder</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="n">thread</span><span class="o">!!</span><span class="p">.</span><span class="nf">setRunning</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">!!</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">draw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="nc">Canvas</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">.</span><span class="nf">draw</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">canvas</span> <span class="p">!=</span> <span class="k">null</span><span class="p">){</span>
+            <span class="n">canvas</span><span class="p">.</span><span class="nf">drawColor</span><span class="p">(</span><span class="mh">0xFFAAAAA</span><span class="p">)</span>
+            <span class="n">canvas</span><span class="p">.</span><span class="nf">drawBitmap</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span><span class="n">cx</span><span class="p">,</span><span class="n">cy</span><span class="p">,</span><span class="k">null</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="k">public</span> <span class="k">fun</span> <span class="nf">onDraw</span><span class="p">(</span><span class="n">canvas</span><span class="p">:</span> <span class="nc">Canvas</span><span class="p">?)</span> <span class="p">{</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">canvas</span> <span class="p">!=</span> <span class="k">null</span><span class="p">){</span>
+            <span class="n">canvas</span><span class="p">.</span><span class="nf">drawColor</span><span class="p">(</span><span class="mh">0xFFAAAAA</span><span class="p">)</span>
+            <span class="n">canvas</span><span class="p">.</span><span class="nf">drawBitmap</span><span class="p">(</span><span class="n">icon</span><span class="p">,</span><span class="n">cx</span><span class="p">,</span><span class="n">cy</span><span class="p">,</span><span class="k">null</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">updateMe</span><span class="p">(</span><span class="n">inx</span> <span class="p">:</span> <span class="nc">Float</span> <span class="p">,</span> <span class="n">iny</span> <span class="p">:</span> <span class="nc">Float</span><span class="p">){</span>
+        <span class="n">lastGx</span> <span class="p">+=</span> <span class="n">inx</span>
+        <span class="n">lastGy</span> <span class="p">+=</span> <span class="n">iny</span>
+
+        <span class="n">cx</span> <span class="p">+=</span> <span class="n">lastGx</span>
+        <span class="n">cy</span> <span class="p">+=</span> <span class="n">lastGy</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">cx</span> <span class="p">&gt;</span> <span class="p">(</span><span class="nc">Windowwidth</span> <span class="p">-</span> <span class="n">picWidth</span><span class="p">)){</span>
+            <span class="n">cx</span> <span class="p">=</span> <span class="p">(</span><span class="nc">Windowwidth</span> <span class="p">-</span> <span class="n">picWidth</span><span class="p">).</span><span class="nf">toFloat</span><span class="p">()</span>
+            <span class="n">lastGx</span> <span class="p">=</span> <span class="mf">0F</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">noBorderX</span><span class="p">){</span>
+                <span class="n">vibratorService</span><span class="o">!!</span><span class="p">.</span><span class="nf">vibrate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+                <span class="n">noBorderX</span> <span class="p">=</span> <span class="k">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">cx</span> <span class="p">&lt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">)){</span>
+            <span class="n">cx</span> <span class="p">=</span> <span class="mf">0F</span>
+            <span class="n">lastGx</span> <span class="p">=</span> <span class="mf">0F</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">noBorderX</span><span class="p">){</span>
+                <span class="n">vibratorService</span><span class="o">!!</span><span class="p">.</span><span class="nf">vibrate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+                <span class="n">noBorderX</span> <span class="p">=</span> <span class="k">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span><span class="p">{</span> <span class="n">noBorderX</span> <span class="p">=</span> <span class="k">true</span> <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">cy</span> <span class="p">&gt;</span> <span class="p">(</span><span class="nc">Windowheight</span> <span class="p">-</span> <span class="n">picHeight</span><span class="p">)){</span>
+            <span class="n">cy</span> <span class="p">=</span> <span class="p">(</span><span class="nc">Windowheight</span> <span class="p">-</span> <span class="n">picHeight</span><span class="p">).</span><span class="nf">toFloat</span><span class="p">()</span>
+            <span class="n">lastGy</span> <span class="p">=</span> <span class="mf">0F</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">noBorderY</span><span class="p">){</span>
+                <span class="n">vibratorService</span><span class="o">!!</span><span class="p">.</span><span class="nf">vibrate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+                <span class="n">noBorderY</span> <span class="p">=</span> <span class="k">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">cy</span> <span class="p">&lt;</span> <span class="p">(</span><span class="mi">0</span><span class="p">)){</span>
+            <span class="n">cy</span> <span class="p">=</span> <span class="mf">0F</span>
+            <span class="n">lastGy</span> <span class="p">=</span> <span class="mf">0F</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">noBorderY</span><span class="p">){</span>
+                <span class="n">vibratorService</span><span class="o">!!</span><span class="p">.</span><span class="nf">vibrate</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+                <span class="n">noBorderY</span><span class="p">=</span> <span class="k">false</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">else</span><span class="p">{</span> <span class="n">noBorderY</span> <span class="p">=</span> <span class="k">true</span> <span class="p">}</span>
+
+        <span class="nf">invalidate</span><span class="p">()</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>If you found this helpful, click the <img class="emoji" title=":heart:" alt=":heart:" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" height="20" width="20"> below. Follow me for more articles on technology.</p>
+
+<p>Here is the <a href="https://github.com/enzoftware/metallball">link</a> to the full source code 💥</p>
+
+          </div>
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=Let%E2%80%99s+play+with+the+Android+accelerometer+++Kotlin+%20-%20enzoftware.github.io/posts/android-accelerometer%20by%20@enzoftware" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewbox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"></path></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=enzoftware.github.io/posts/android-accelerometer" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewbox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"></path></svg>
+            </a>
+          </div>
+
+          
+            <div id="disqus_thread" class="article-comments"></div>
+            <script src="https://enzoftwareblog.disqus.com/embed.js" async defer></script>
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+          
+        </article>
+        <footer class="footer center scrollappear">
+  <p>
+    <a href="/about" title="About me">Enzo Lizama</a> || <b>2020</b>.
+  </p>
+</footer>
+
+      </div>
+    </div>
+  </main>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28631876-6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-28631876-6');
+  </script>
+
+
+<script src="/assets/vendor-130c9c254effc51f3283620bc635851da7b99c20901216948f11ba72ee13317f.js" type="text/javascript"></script>
+
+
+
+
+  <script src="/assets/scrollappear-e2da8ea567e418637e31266cc5302126eaa79f62a2273739086358b589a89ee6.js" type="text/javascript"></script>
+
+
+<script src="/assets/application-cfde13ac81ddaf4351b2e739603e2baf688d0fcc9aba613fe62bbb1c7b037fb9.js" type="text/javascript"></script>
+
+
+  <script src="/assets/themetoggle-df0d3d73164dc26dffbd630182ae4d0dfa7bee6b694a2b5d565d73595b582bbf.js" type="text/javascript"></script>
+
+</body>
+</html>
