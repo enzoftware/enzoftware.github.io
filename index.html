@@ -1,25 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Enzo Lizama Paredes</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="fullPage/dist/fullpage.css" />
-    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.1.19/css/materialdesignicons.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  </head>
-  <body>
-    
-    <div id="app"></div>
+---
+layout: default
+title: "The high quality, completely customizable, performant and 100% free blog template for Jekyll"
+description: "Chalk uses all the best tools and merges them into one premium blogging theme."
+---
 
-    <script src="dist/build.js"></script>
-    
-    <script type="text/javascript" src="fullPage/dist/fullpage.js"></script>
-    <script type="text/javascript" src="fullPage/vendors/scrolloverflow.js"></script>
-  </body>
-</html>
+<ul class="article-list">
+  {% for post in paginator.posts %}
+    <li class="article-list-item {% if site.scrollappear_enabled %}scrollappear{% endif %}">
+      <a href="{{ post.url | relative_url }}" title="{{ post.title }}">
+        <h5>
+          {{ post.title }}
+          {% include svg-icon.html icon="arrow-right" %}
+        </h5>
+      </a>
+      <p>
+        {% if post.description %}
+          {{ post.description }}  
+        {% else %}
+          {{ post.excerpt }}
+        {% endif %}
+      </p>
+      {% include article/info-footer.html post=post %}
+    </li>
+  {% endfor %}
+  {% if paginator.total_pages > 1 %}
+    <li class="article-pagination {% if site.settings.scrollappear_enabled %}scrollappear{% endif %}">
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="article-pagination-left">{% include svg-icon.html icon="arrow-left" %} Older posts</a>
+      {% endif %}
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="article-pagination-right">Newer posts {% include svg-icon.html icon="arrow-right" %}</a>
+      {% endif %}
+    </li>
+  {% endif %}
+</ul>
