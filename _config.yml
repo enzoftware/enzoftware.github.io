@@ -9,7 +9,7 @@ url: enzoftware.github.io
 
 about_enabled: false # Change to true if you wish to show an icon in the navigation that redirects to the about page
 discus_identifier: enzoftwareblog # Add your Disqus identifier
-ga_analytics: UA-28631876-6 # Add your GA Tracking Id
+ga_analytics: UA-167450416-1 # Add your GA Tracking Id
 local_fonts: true # Change to true if you wish to use local fonts
 rss_enabled: false # Change to false if not
 scrollappear_enabled: true # Change to false to disable
