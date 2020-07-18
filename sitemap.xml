@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>enzoftware.github.io/tag/android/</loc>
-<lastmod>2020-07-18T01:42:18-05:00</lastmod>
-</url>
-<url>
-<loc>enzoftware.github.io/tag/flutter/</loc>
-<lastmod>2020-07-18T01:42:18-05:00</lastmod>
-</url>
-<url>
-<loc>enzoftware.github.io/tag/kotlin/</loc>
-<lastmod>2020-07-18T01:42:18-05:00</lastmod>
-</url>
-<url>
-<loc>enzoftware.github.io/tag/python/</loc>
-<lastmod>2020-07-18T01:42:18-05:00</lastmod>
-</url>
-<url>
-<loc>enzoftware.github.io/posts/image-filter-python</loc>
-<lastmod>2017-09-16T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>enzoftware.github.io/posts/android-accelerometer</loc>
-<lastmod>2017-12-20T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>enzoftware.github.io/posts/flutter-hotel-booking</loc>
-<lastmod>2020-07-10T00:00:00-05:00</lastmod>
-</url>
-<url>
-<loc>enzoftware.github.io/about</loc>
-</url>
-<url>
-<loc>enzoftware.github.io/</loc>
-</url>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>enzoftware.github.io/tag/android/</loc>
+        <lastmod>2020-07-18T01:42:18-05:00</lastmod>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/tag/flutter/</loc>
+        <lastmod>2020-07-18T01:42:18-05:00</lastmod>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/tag/kotlin/</loc>
+        <lastmod>2020-07-18T01:42:18-05:00</lastmod>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/tag/python/</loc>
+        <lastmod>2020-07-18T01:42:18-05:00</lastmod>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/posts/image-filter-python</loc>
+        <lastmod>2017-09-16T00:00:00-05:00</lastmod>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/posts/android-accelerometer</loc>
+        <lastmod>2017-12-20T00:00:00-05:00</lastmod>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/posts/flutter-hotel-booking</loc>
+        <lastmod>2020-07-10T00:00:00-05:00</lastmod>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/about</loc>
+    </url>
+    <url>
+        <loc>enzoftware.github.io/</loc>
+    </url>
 </urlset>
