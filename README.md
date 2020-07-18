@@ -1,3 +1,4 @@
-# enzoftware.github.io
+# enzoftware's blog
+---
 
-:soccer: :beers: Just a little about me :beers: :soccer:
+This is my personal blog to share my thoughts and experiences.
