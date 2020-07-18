@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/assets/cormorant-garamond/Cormorant-Garamond-700-51c2c6f5b44e53050c44900ba708701e37e8a3060bef8b2ada62721bc1ad8b6a.eot);
+  src: url(/assets/cormorant-garamond/Cormorant-Garamond-700-51c2c6f5b44e53050c44900ba708701e37e8a3060bef8b2ada62721bc1ad8b6a.eot#iefix) format("embedded-opentype"), local("Cormorant Garamond Medium"), local("Cormorant-Garamond-600"), url(/assets/cormorant-garamond/Cormorant-Garamond-700-fded23c4b1698170c6e69f76e94ee8fd2655787e19d4b04e16257db322d36ef8.woff2) format("woff2"), url(/assets/cormorant-garamond/Cormorant-Garamond-700-218f613b673b2ed4d3621983c6f5bee31c7b08e7f0bfb5861afbc5991e57f7ff.woff) format("woff"), url(/assets/cormorant-garamond/Cormorant-Garamond-700-b2936c7e380cb7c6dbc62ac24304f7c5b97f1770c7a98c6769b5442f6586da7a.ttf) format("truetype"); }
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: url(/assets/lato/Lato-300-b3c80a87f8b314c5794db7afa81a8fc293468751b3514cd10246a09dbd70cc8b.eot);
+  src: url(/assets/lato/Lato-300-b3c80a87f8b314c5794db7afa81a8fc293468751b3514cd10246a09dbd70cc8b.eot#iefix) format("embedded-opentype"), local("Lato Light"), local("Lato-300"), url(/assets/lato/Lato-300-b8399cfb4dc050044637c68f695ff244ba69e1e2176385554213d029d39c2ad9.woff2) format("woff2"), url(/assets/lato/Lato-300-29f5bc09348d54f96fe5b9de4c094031e78ad72c3377207145671adf9ce94610.woff) format("woff"), url(/assets/lato/Lato-300-24f0c478c163116ebd58dba6c4ec5f9f6ca7bf6fe2def65c5d3ebd80c6e65769.ttf) format("truetype"); }
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/assets/lato/Lato-regular-67a5f6c7d2193afeca653fe271380ccd0c5d6ee501084bfe48e156e83e1669d7.eot);
+  src: url(/assets/lato/Lato-regular-67a5f6c7d2193afeca653fe271380ccd0c5d6ee501084bfe48e156e83e1669d7.eot#iefix) format("embedded-opentype"), local("Lato Regular"), local("Lato-regular"), url(/assets/lato/Lato-regular-22d55c6b0ddd2233c2f36bcf47fa41eaa233923cb4d01187f55daac3ec1ddacd.woff2) format("woff2"), url(/assets/lato/Lato-regular-86f0f2725edb74685c24fe5d6fd5647804285443fdb8395276bc57b9f24e7a77.woff) format("woff"), url(/assets/lato/Lato-regular-256a19c60a8089b6468b4b981d722e5515fd4c5177477cab146c781766b3319c.ttf) format("truetype"); }
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/assets/lato/Lato-700-e13964452ead734f1719c291ae70933270ef70fcd87670a4ac54f220fc0eee10.eot);
+  src: url(/assets/lato/Lato-700-e13964452ead734f1719c291ae70933270ef70fcd87670a4ac54f220fc0eee10.eot#iefix) format("embedded-opentype"), local("Lato Bold"), local("Lato-700"), url(/assets/lato/Lato-700-8dfd2edafe8ba64b8f92a9b43cf840b1de201514c6077d6391d3bd141fb38d1e.woff2) format("woff2"), url(/assets/lato/Lato-700-d38b77403d308a43add8fe3a9485f7fc8db468a697e3766acaa9d105fde84ded.woff) format("woff"), url(/assets/lato/Lato-700-55ca5bfda3d140e229e329d321a7467a04d475a983d6b09f4a8ec2ce18837347.ttf) format("truetype"); }

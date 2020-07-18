@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>enzoftware's blog | How to build amazing image filters with Python— Median filter 📷 , Sobel filter ⚫️ ⚪️</title>
+  <meta name="description" content="Let's implement some interesting filters to the images with Python">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="How to build amazing image filters with Python— Median filter 📷 , Sobel filter ⚫️ ⚪️">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/posts/image-filter-python">
+  <meta property="og:description" content="Let's implement some interesting filters to the images with Python">
+  <meta property="og:site_name" content="enzoftware's blog">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="http://localhost:4000/posts/image-filter-python">
+  <meta name="twitter:title" content="How to build amazing image filters with Python— Median filter 📷 , Sobel filter ⚫️ ⚪️">
+  <meta name="twitter:description" content="Let's implement some interesting filters to the images with Python">
+
+  
+    <meta property="og:image" content="http://localhost:4000/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+    <meta name="twitter:image" content="http://localhost:4000/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+  
+
+  <link href="http://localhost:4000/feed.xml" type="application/rss+xml" rel="alternate" title="enzoftware's blog Last 10 blog posts" />
+
+  
+    <link rel="stylesheet" type="text/css" href="/assets/fonts-85dab368d056b5d66418fbfd7e55a89f34f644ee811c8218c81017204426121b.css">
+  
+
+  
+
+    
+      <link rel="icon" type="image/x-icon" href="/assets/favicon-light-a98c41efc5ed9fcc06ac664c9e2f7a9b3c3b2e0a52357d221fe382f6f4abc8fc.ico">
+      <link rel="apple-touch-icon" href="/assets/apple-touch-icon-light-87d1f2a3a19b1500e5c1626a0492025ca5f7f97d24540dc5900288e92112925a.png">
+      <link rel="stylesheet" type="text/css" title="light" id="light" href="/assets/light-bb1553a18d0f1ccfe1aabc010584c49b4277a88503216b78906ba719e30019c1.css">
+      <link rel="stylesheet" type="text/css" title="dark" id="dark" href="/assets/dark-831218bc9e41aef39ee6a0bae4501195bccafcc13101ae2b9cd20493a6ec04c0.css" disabled="true">
+    
+
+  
+
+</head>
+
+<body>
+  <main>
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav scrollappear">
+  <a href="/" class="header-logo" title="enzoftware's blog">enzoftware's blog</a>
+  <ul class="header-links">
+    
+    
+      <li>
+        <a href="https://twitter.com/enzoftware" rel="noreferrer noopener" target="_blank" title="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-twitter">
+  <use href="/assets/twitter-8842c33965263ad1b03a978406826677a668f94125d5837e70ab83f24b3213a7.svg#icon-twitter" xlink:href="/assets/twitter-8842c33965263ad1b03a978406826677a668f94125d5837e70ab83f24b3213a7.svg#icon-twitter"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a href="https://medium.com/enzoftware" rel="noreferrer noopener" target="_blank" title="Medium">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-medium">
+  <use href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium" xlink:href="/assets/medium-c490b76e2e7329f77cc2df18acc17452868ea861ed0e1ecf621c9777877068f5.svg#icon-medium"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="https://github.com/enzoftware" rel="noreferrer noopener" target="_blank" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-github">
+  <use href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github" xlink:href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+      <li>
+        <a href="https://stackoverflow.com/users/7966313" rel="noreferrer noopener" target="_blank" title="Stack Overflow">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-stackoverflow">
+  <use href="/assets/stackoverflow-12ba59133ed134d26156d30f095e0222b6039395cf26f2fab0cb6ce3ef2db00d.svg#icon-stackoverflow" xlink:href="/assets/stackoverflow-12ba59133ed134d26156d30f095e0222b6039395cf26f2fab0cb6ce3ef2db00d.svg#icon-stackoverflow"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+      <li>
+        <a href="https://www.linkedin.com/in/enzolizama" rel="noreferrer noopener" target="_blank" title="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-linkedin">
+  <use href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin" xlink:href="/assets/linkedin-cdc5c107044324a3dfbea2e9ead15873f8dee304c37d73a046988956b706256e.svg#icon-linkedin"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li>
+        <a href="mailto:lizama.enzo@gmail.com" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-email">
+  <use href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email" xlink:href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+      <li>
+        <a onclick="toggle()" title="Toggle Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-theme">
+  <use href="/assets/theme-66869e0bf8dab34bae1c86bda400327b772e0be69e8dc28d3ede896e771320ed.svg#icon-theme" xlink:href="/assets/theme-66869e0bf8dab34bae1c86bda400327b772e0be69e8dc28d3ede896e771320ed.svg#icon-theme"></use>
+</svg>
+
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+
+
+        <article class="article scrollappear">
+          <header class="article-header">
+            <h1>How to build amazing image filters with Python— Median filter 📷 , Sobel filter ⚫️ ⚪️</h1>
+            <p>Let's implement some interesting filters to the images with Python</p>
+            <div class="article-list-footer">
+  <span class="article-list-date">
+    September 16, 2017
+  </span>
+  <span class="article-list-divider">-</span>
+  <span class="article-list-minutes">
+    
+    
+      7 minute read
+    
+  </span>
+  <span class="article-list-divider">-</span>
+  <div class="article-list-tags">
+    
+      
+      <a href="/tag/python" title="See all posts with tag 'Python'">Python</a>
+    
+  </div>
+</div>
+          </header>
+
+          <div class="article-content">
+            <p>Nowadays, I’m starting in a new programming language : Python 🐍 . And I am pleased to share some of my knowledge about this new topic , which is image processing.
+<img src="https://cdn-images-1.medium.com/max/2000/1*6N1clEI8EInQ5I8MWaOUSQ.png" alt="digital image processing" /></p>
+
+<h2 id="what-is-digital-image-processing">What is digital image processing</h2>
+
+<p>It is a set of techniques whose objective is to obtain a result with a specific application from a source image, improving certain characteristics that allow you to extract information from the image.
+OK , After a short introduction about the meaning of image processing, Let’s continue with the filters that I will show you in this post.</p>
+
+<h2 id="median-filter">Median filter</h2>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*VyzJxDrLrC-OqkV5LHhjQQ.gif" alt="Median filter" />
+Taken from <a href="http://artemhlezin.com/2016/09/04/median.html">Artemlezin Blog</a>
+This filter is used to eliminate the ‘noise’ of the images, mainly is salt-n-pepper noise.
+There is not much theory beyond the one in the picture. This is how the filter works : gets all the values inside a mask, sorts them and then assigns the mean value to the coordinate.
+This is how it looks an image with salt and pepper noise :
+<img src="https://cdn-images-1.medium.com/max/800/1*UmRXiE--hLWK1g0MYeLBXQ.png" alt="image python" />
+In Python 🐍 the filter works like this, enter to check the result:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">"noise.png"</span> <span class="c1"># Your image path
+</span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">members</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">9</span>
+<span class="n">newimg</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s">"RGB"</span><span class="p">,(</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">),</span><span class="s">"white"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">members</span><span class="p">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">newimg</span><span class="p">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),(</span><span class="n">members</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<p>And this is the result :
+<img src="https://cdn-images-1.medium.com/max/800/1*ZPis4b0GS0debu46lvDFAw.png" alt="Result" /></p>
+
+<h2 id="sobel-filter">Sobel filter</h2>
+
+<p>The Sobel operator is an algorithm for edge detection, a technique to find the limits between regions in an image. The edge detection algorithm help us separate some specific parts of the source image and take them off from the background. There is more interesting theory about edge detection and the Sobel operator , but we will focus on the Python 🐍 implementation.
+Due to the excitement for the South American World Cup qualifiers I decided to use this image for example :
+<img src="https://cdn-images-1.medium.com/max/800/1*9jwN3-6_N6aoTUgmdTlqyA.jpeg" alt="Vamos Perú" />
+In Python 🐍 the filter works like this, enter to check the result:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">"peru.jpeg"</span> <span class="c1"># Your image path
+</span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">newimg</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s">"RGB"</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="s">"white"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># ignore the edge pixels for simplicity (1 to width-1)
+</span>    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># ignore edge pixels for simplicity (1 to height-1)
+</span>
+        <span class="c1"># initialise Gx to 0 and Gy to 0 for every pixel
+</span>        <span class="n">Gx</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">Gy</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># top left pixel
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># intensity ranges from 0 to 765 (255 * 3)
+</span>        <span class="n">intensity</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span>
+
+        <span class="c1"># accumulate the value into Gx, and Gy
+</span>        <span class="n">Gx</span> <span class="o">+=</span> <span class="o">-</span><span class="n">intensity</span>
+        <span class="n">Gy</span> <span class="o">+=</span> <span class="o">-</span><span class="n">intensity</span>
+
+        <span class="c1"># remaining left column
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">Gx</span> <span class="o">+=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">Gx</span> <span class="o">+=</span> <span class="o">-</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">Gy</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="c1"># middle pixels
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">Gy</span> <span class="o">+=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">Gy</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="c1"># right column
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">Gx</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">Gy</span> <span class="o">+=</span> <span class="o">-</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">Gx</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="n">Gx</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">Gy</span> <span class="o">+=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">g</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+        <span class="c1"># calculate the length of the gradient (Pythagorean theorem)
+</span>        <span class="n">length</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">Gx</span> <span class="o">*</span> <span class="n">Gx</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">Gy</span> <span class="o">*</span> <span class="n">Gy</span><span class="p">))</span>
+
+        <span class="c1"># normalise the length of gradient to the range 0 to 255
+</span>        <span class="n">length</span> <span class="o">=</span> <span class="n">length</span> <span class="o">/</span> <span class="mi">4328</span> <span class="o">*</span> <span class="mi">255</span>
+
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+
+        <span class="c1"># draw the length in the edge image
+</span>        <span class="c1">#newpixel = img.putpixel((length,length,length))
+</span>        <span class="n">newimg</span><span class="p">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">length</span><span class="p">,</span><span class="n">length</span><span class="p">,</span><span class="n">length</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>And this is the result :
+<img src="https://cdn-images-1.medium.com/max/800/1*gzEy2Q6xKX6-OTmK8pdF7w.png" alt="Result" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I mentioned that there is much more theory about this subject; so, I will leave some articles that, in my opinion, are the most complete and better explained in the web.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li>
+    <p><a href="https://blog.saush.com">Saush Blog’s , good description about sobel operator and other image processing filter.</a></p>
+  </li>
+  <li>
+    <p><a href="https://stackoverflow.com/questions/40445415/sobel-edge-detection-implementation">An edge detection implementation in C++.</a></p>
+  </li>
+  <li>
+    <p><a href="http://fourier.eng.hmc.edu/e161/lectures/smooth_sharpen/node2.htm">A detailed article about of median filter.</a>
+<a href="Another implementation of Sobel filter.">http://homepages.inf.ed.ac.uk/rbf/HIPR2/sobel.htm</a></p>
+  </li>
+</ul>
+
+<p>Thanks for reading this little post , totally open to feedback. Questions in the comment box and show your support 👏❤️ .
+You can watch my open-source projects in my <a href="https://github.com/enzoftware">Github</a> account.</p>
+
+          </div>
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=How+to+build+amazing+image+filters+with+Python%E2%80%94+Median+filter+%F0%9F%93%B7+,+Sobel+filter+%E2%9A%25...%20-%20http://localhost:4000/posts/image-filter-python%20by%20@enzoftware" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/image-filter-python" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"/></svg>
+            </a>
+          </div>
+
+          
+            <div id="disqus_thread" class="article-comments"></div>
+            <script src="https://enzoftwareblog.disqus.com/embed.js" async defer></script>
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+          
+        </article>
+        <footer class="footer scrollappear">
+  <p>
+    2020 ||
+    <a href="/about" title="About me">Enzo Lizama Paredes</a>
+  </p>
+</footer>
+
+      </div>
+    </div>
+  </main>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28631876-6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-28631876-6');
+  </script>
+
+
+<script src="/assets/vendor-130c9c254effc51f3283620bc635851da7b99c20901216948f11ba72ee13317f.js" type="text/javascript"></script>
+
+
+
+
+  <script src="/assets/scrollappear-e2da8ea567e418637e31266cc5302126eaa79f62a2273739086358b589a89ee6.js" type="text/javascript"></script>
+
+
+<script src="/assets/application-cfde13ac81ddaf4351b2e739603e2baf688d0fcc9aba613fe62bbb1c7b037fb9.js" type="text/javascript"></script>
+
+
+  <script src="/assets/themetoggle-df0d3d73164dc26dffbd630182ae4d0dfa7bee6b694a2b5d565d73595b582bbf.js" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,26 +1,20 @@
+---
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom" xmlns:dc="https://purl.org/dc/elements/1.1/">
   <channel>
-    <title>enzoftware's blog</title>
-    <description></description>
-    <link>enzoftware.github.io</link>
-    <atom:link href="enzoftware.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    
+    <title>{{ site.name | xml_escape }}</title>
+    <description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ page.path | absolute_url }}" rel="self" type="application/rss+xml" />
+    {% for post in site.posts limit:10 %}
       <item>
-        <title>Let’s play with the Android accelerometer + Kotlin </title>
-        <description>Taking a look into sensors in Android devices. How it works and how can we take advantage of it.</description>
-        <pubDate>Wed, 20 Dec 2017 00:00:00 -0500</pubDate>
-        <link>enzoftware.github.io/posts/android-accelerometer</link>
-        <guid isPermaLink="true">enzoftware.github.io/posts/android-accelerometer</guid>
+        <title>{{ post.title | xml_escape }}</title>
+        <description>{{ post.description | xml_escape }}</description>
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ post.url | absolute_url }}</link>
+        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
       </item>
-    
-      <item>
-        <title>How to build amazing image filters with Python— Median filter 📷 , Sobel filter ⚫️ ⚪️</title>
-        <description>Let's implement some interesting filters to the images with Python</description>
-        <pubDate>Sat, 16 Sep 2017 00:00:00 -0500</pubDate>
-        <link>enzoftware.github.io/posts/image-filter-python</link>
-        <guid isPermaLink="true">enzoftware.github.io/posts/image-filter-python</guid>
-      </item>
-    
+    {% endfor %}
   </channel>
 </rss>
