@@ -82,6 +82,9 @@
 @media (min-width: 1024px) {
   .bento-container {
     height: 100dvh;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 20px 72px;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(10, 1fr);
     overflow: hidden;

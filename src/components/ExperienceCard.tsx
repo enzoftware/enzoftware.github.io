@@ -71,7 +71,7 @@ export function ExperienceCard({ t }: ExperienceCardProps) {
       </div>
 
       {/* Experience list */}
-      <div className="flex flex-col gap-3 flex-1 justify-between">
+      <div className="flex flex-col gap-3">
         {experiences.map((exp, i) => (
           <motion.div
             key={exp.company}

@@ -79,9 +79,27 @@ export function HeroCard({ t, avatarUrl }: HeroCardProps) {
         </motion.p>
 
         {/* Bio */}
-        <motion.p variants={item} className="text-ink/70 text-sm lg:text-base leading-relaxed max-w-lg">
+        <motion.p variants={item} className="text-ink/70 text-sm lg:text-base leading-relaxed max-w-lg mb-5">
           {t.bio}
         </motion.p>
+
+        {/* Key highlights */}
+        <motion.div variants={item} className="flex flex-col gap-2">
+          {[
+            { icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z", text: t.highlight_arch },
+            { icon: "M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01", text: t.highlight_releases },
+            { icon: "M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75", text: t.highlight_teams },
+          ].map((h) => (
+            <div key={h.text} className="flex items-center gap-2.5">
+              <div className="w-5 h-5 rounded-md bg-accent/10 flex items-center justify-center flex-shrink-0">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2B5C8A" strokeWidth="2">
+                  <path d={h.icon} />
+                </svg>
+              </div>
+              <span className="text-xs lg:text-sm text-ink/65">{h.text}</span>
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
 
       {/* Bottom area: badges + CTAs */}
